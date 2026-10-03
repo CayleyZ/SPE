@@ -11,7 +11,7 @@ This repository contains the main pre-training and fine-tuning experiments.
 
 ## Released checkpoint
 
-The validated checkpoint bundle is prepared. **ModelScope publication is pending the author's command-line authentication.** This section will be updated with the actual model link after upload.
+Download the pre-trained weights from **[ModelScope: kailai1104/SPE](https://modelscope.cn/models/kailai1104/SPE)**.
 
 | Setting | Value |
 | --- | --- |
@@ -23,7 +23,9 @@ The validated checkpoint bundle is prepared. **ModelScope publication is pending
 | MPR-SG | sigmoid slope 4.0, numerical epsilon 1e-6 |
 | Pre-training sequence length | 128 |
 | Checkpoint size | 438,310,944 bytes |
-| SHA256 | `1a699611b10bde0c1c6d7e35e4d7ee0789fd33df588d78fedd375c298ace11c45` |
+| SHA256 | `1a69961b10bde0c1c6d7e35e4d7ee0789fd33df588d78fedd375c298ace11c45` |
+
+The public ModelScope download was verified against the SHA256 above.
 
 The checkpoint contains the original, unmodified weights plus the matching
 configuration and tokenizer. Optimizer, scheduler, and random-state files are
@@ -43,7 +45,7 @@ pip install -r requirements.txt
 # For a CUDA 12.x runtime:
 pip install cupy-cuda12x==13.0.0
 pip install modelscope_hub
-# ModelScope download command will be added after the checkpoint upload.
+python -c "from modelscope_hub import HubApi; HubApi().download_repo('kailai1104/SPE', 'model', local_dir='checkpoints/SPE')"
 ```
 
 CuPy must match the CUDA runtime. CPU inference and small training runs can use

@@ -162,5 +162,12 @@
     "Full paper pre-training and downstream experiments were not rerun.",
     "MLM perplexity is corpus- and mask-dependent; pseudo-PPL uses a different protocol.",
     "Distributed launches are supplied but only single-GPU training was checked."
-  ]
+  ],
+  "modelscope_publication": {
+    "repo_id": "kailai1104/SPE",
+    "url": "https://modelscope.cn/models/kailai1104/SPE",
+    "public_download": "passed",
+    "downloaded_sha256": "1a69961b10bde0c1c6d7e35e4d7ee0789fd33df588d78fedd375c298ace11c45",
+    "downloaded_bytes": 438310944
+  }
 }
