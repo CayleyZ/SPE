@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-03",
+  "checkpoint": {
+    "checkpoint": "snn_pe2_110M/step_650000",
+    "training_step": 650000,
+    "filename": "model.safetensors",
+    "bytes": 438310944,
+    "sha256": "1a69961b10bde0c1c6d7e35e4d7ee0789fd33df588d78fedd375c298ace11c45"
+  },
+  "runtime": {
+    "python": "3.10",
+    "torch": "2.8.0",
+    "transformers": "4.57.0",
+    "spikingjelly": "0.0.0.0.14",
+    "cupy-cuda12x": "13.0.0",
+    "gpu": "NVIDIA H100 80GB"
+  },
+  "weight_loading": {
+    "checkpoint_keys": 274,
+    "loaded_keys": 274,
+    "missing_keys": [
+      "cls.predictions.decoder.bias",
+      "cls.predictions.decoder.weight"
+    ],
+    "ignored_mlm_head_keys": [],
+    "extended_position_embeddings": [],
+    "shape_mismatches": []
+  },
+  "pseudo_perplexity": {
+    "dataset": "nyu-mll/glue",
+    "configuration": "sst2",
+    "split": "validation",
+    "row_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "max_length": 128,
+    "simulation_steps": 4,
+    "protocol": "Mask each non-special token individually; reset neuron states after each forward pass.",
+    "original_pseudo_ppl": 12.128861403077659,
+    "released_pseudo_ppl": 12.128861403077659,
+    "exact_match": true,
+    "metrics": {
+      "n_tokens": 77,
+      "mean_nll": 2.495587852357149,
+      "pseudo_ppl": 12.128861403077659,
+      "top1_acc": 0.5324675324675324,
+      "samples": [
+        {
+          "sample_index": 0,
+          "n_tokens": 10,
+          "mean_nll": 2.8582326136063783,
+          "pseudo_ppl": 17.43069292729089,
+          "top1_acc": 0.6
+        },
+        {
+          "sample_index": 1,
+          "n_tokens": 8,
+          "mean_nll": 2.5366730513051152,
+          "pseudo_ppl": 12.637556451314447,
+          "top1_acc": 0.625
+        },
+        {
+          "sample_index": 2,
+          "n_tokens": 22,
+          "mean_nll": 2.8757280906164935,
+          "pseudo_ppl": 17.738334535843293,
+          "top1_acc": 0.45454545454545453
+        },
+        {
+          "sample_index": 3,
+          "n_tokens": 26,
+          "mean_nll": 2.483886710762118,
+          "pseudo_ppl": 11.987766971221617,
+          "top1_acc": 0.5
+        },
+        {
+          "sample_index": 4,
+          "n_tokens": 11,
+          "mean_nll": 1.4034074192379855,
+          "pseudo_ppl": 4.0690413014484115,
+          "top1_acc": 0.6363636363636364
+        }
+      ]
+    }
+  },
+  "masked_perplexity": {
+    "dataset": "Original local pre-training validation corpus, first 256 tokenized blocks.",
+    "max_length": 128,
+    "batch_size": 8,
+    "mask_probability": 0.15,
+    "seed": 42,
+    "protocol": "BERT MLM masking; token-weighted negative log likelihood.",
+    "metrics": {
+      "masked_tokens": 4835,
+      "mean_nll": 2.022906266915638,
+      "masked_ppl": 7.560265184685802,
+      "top1_acc": 0.5772492244053774
+    }
+  },
+  "smoke_checks": {
+    "pretraining_optimizer_steps": 2,
+    "finetuning_optimizer_steps": 2,
+    "pretraining": {
+      "step": 2,
+      "masked_nll": 10.172637360671471,
+      "masked_ppl": 26177.024058368384,
+      "masked_tokens": 145
+    },
+    "finetuning": {
+      "best_epoch": 1,
+      "best_metric": "accuracy",
+      "best_score": 0.5,
+      "history": [
+        {
+          "epoch": 1,
+          "step": 2,
+          "validation": {
+            "accuracy": 0.5
+          }
+        }
+      ]
+    },
+    "extra": {
+      "cpu_torch_backend_backward": "passed",
+      "state_reset_determinism": "passed",
+      "long_sequence_length": 1024,
+      "classification_shape": [
+        1,
+        2
+      ],
+      "classification_load_report": {
+        "checkpoint_keys": 274,
+        "loaded_keys": 269,
+        "missing_keys": [
+          "bert.pooler.dense.bias",
+          "bert.pooler.dense.weight",
+          "classifier.bias",
+          "classifier.weight"
+        ],
+        "ignored_mlm_head_keys": [
+          "cls.predictions.bias",
+          "cls.predictions.transform.LayerNorm.bias",
+          "cls.predictions.transform.LayerNorm.weight",
+          "cls.predictions.transform.dense.bias",
+          "cls.predictions.transform.dense.weight"
+        ],
+        "extended_position_embeddings": [
+          "bert.embeddings.position_embeddings.weight"
+        ],
+        "shape_mismatches": []
+      }
+    },
+    "raw_text_preprocessing": "passed: one optimizer step, evaluation, model saving",
+    "accelerate_resume": "passed: step_2 checkpoint loaded and advanced to step_3"
+  },
+  "limitations": [
+    "This checks checkpoint compatibility and executable training entry points.",
+    "Full paper pre-training and downstream experiments were not rerun.",
+    "MLM perplexity is corpus- and mask-dependent; pseudo-PPL uses a different protocol.",
+    "Distributed launches are supplied but only single-GPU training was checked."
+  ]
+}

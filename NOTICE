@@ -1,0 +1,11 @@
+SPE - Positional Encoding for Spiking Transformers
+
+The BERT model implementation is derived from Hugging Face Transformers and
+has been modified to implement spiking attention, time-step accumulation,
+PE-LIF neurons, and the MPR-SG surrogate gradient.
+
+Upstream copyright notices:
+Copyright 2018 The Google AI Language Team Authors and The HuggingFace Inc. team.
+Copyright (c) 2018, NVIDIA CORPORATION. All rights reserved.
+
+The released checkpoint uses the bert-base-uncased vocabulary/tokenizer.

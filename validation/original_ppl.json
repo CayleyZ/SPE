@@ -1,0 +1,49 @@
+{
+  "checkpoint": "snn_pe2_110M/step_650000",
+  "load_report": {
+    "loaded_keys": 274,
+    "model_keys": 276,
+    "matched_keys": 274,
+    "skipped_shape_keys": 0,
+    "missing_keys": 2,
+    "missing_key_examples": [
+      "cls.predictions.decoder.weight",
+      "cls.predictions.decoder.bias"
+    ]
+  },
+  "pseudo_ppl": 12.128861403077659,
+  "mean_nll": 2.495587852357149,
+  "n_tokens": 77,
+  "samples": [
+    {
+      "n_tokens": 10,
+      "mean_nll": 2.8582326136063783,
+      "pseudo_ppl": 17.43069292729089,
+      "top1_acc": 0.6
+    },
+    {
+      "n_tokens": 8,
+      "mean_nll": 2.5366730513051152,
+      "pseudo_ppl": 12.637556451314447,
+      "top1_acc": 0.625
+    },
+    {
+      "n_tokens": 22,
+      "mean_nll": 2.8757280906164935,
+      "pseudo_ppl": 17.738334535843293,
+      "top1_acc": 0.45454545454545453
+    },
+    {
+      "n_tokens": 26,
+      "mean_nll": 2.483886710762118,
+      "pseudo_ppl": 11.987766971221617,
+      "top1_acc": 0.5
+    },
+    {
+      "n_tokens": 11,
+      "mean_nll": 1.4034074192379855,
+      "pseudo_ppl": 4.0690413014484115,
+      "top1_acc": 0.6363636363636364
+    }
+  ]
+}
