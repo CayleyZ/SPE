@@ -210,7 +210,7 @@ class BertSelfAttention(nn.Module):
         simsig_eps = getattr(config, "simsig_eps", 1e-6)
 
         self.proj_lif = neuron.LIFNode(tau=pelif_tau, detach_reset=True, backend=getattr(config, "neuron_backend", "cupy"), step_mode='m')
-        
+
 
         self.q_lif = PELIFNode(
             tau=pelif_tau,
@@ -240,9 +240,9 @@ class BertSelfAttention(nn.Module):
                 eps=simsig_eps,
             ),
         )
-        
+
         self.v_lif = neuron.LIFNode(tau=pelif_tau, detach_reset=True, backend=getattr(config, "neuron_backend", "cupy"), step_mode='m')
-        
+
         self.scale = 0.125
 
         self.query = nn.Linear(config.hidden_size, self.all_head_size)
@@ -363,7 +363,7 @@ class BertSelfAttention(nn.Module):
         # attention_probs = self.dropout(attention_probs)
         if attention_mask is not None:
             attention_scores = attention_scores * attention_mask.unsqueeze(0)
-        
+
         attention_probs = attention_scores * self.scale
 
         # Mask heads if we want to
@@ -568,7 +568,7 @@ class BertIntermediate(nn.Module):
             self.intermediate_act_fn = ACT2FN[config.hidden_act]
         else:
             self.intermediate_act_fn = config.hidden_act
-        
+
         self.mlp1_lif = neuron.LIFNode(tau=2.0, detach_reset=True, backend=getattr(config, "neuron_backend", "cupy"), step_mode='m')
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
@@ -966,9 +966,9 @@ class BertModel(BertPreTrainedModel):
         return_dict: Optional[bool] = None,
         cache_position: Optional[torch.Tensor] = None,
     ) -> Union[tuple[torch.Tensor], BaseModelOutputWithPoolingAndCrossAttentions]:
-        
+
         functional.reset_net(self)
-        
+
         output_attentions = output_attentions if output_attentions is not None else self.config.output_attentions
         output_hidden_states = (
             output_hidden_states if output_hidden_states is not None else self.config.output_hidden_states
